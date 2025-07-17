@@ -1,0 +1,175 @@
+**Low-Level Design (LLD) Interview Question Answers**
+
+---
+
+### 1. URL Shortener (e.g., bit.ly)
+
+**Classes:**
+
+* `UrlShortener`: generate short URL, decode long URL
+* `UrlMapping`: stores short-long mapping
+* `Base62Encoder`: encode/decode logic
+
+```python
+class UrlMapping:
+    def __init__(self, long_url, short_url):
+        self.long_url = long_url
+        self.short_url = short_url
+```
+
+**Key Concepts:**
+
+* Base62 encoding
+* Store mappings in DB/cache
+* Handle collisions with hashing
+* Optional: expiry date, analytics
+
+---
+
+### 2. Parking Lot System
+
+**Classes:**
+
+* `Vehicle`, `Slot`, `ParkingFloor`, `Ticket`, `ParkingLot`
+* Strategy pattern for `SlotAssignmentStrategy`
+
+```python
+class Vehicle:
+    def __init__(self, vehicle_type, plate):
+        self.vehicle_type = vehicle_type
+        self.plate = plate
+```
+
+**Key Concepts:**
+
+* Design for multiple floors
+* Different slot sizes
+* Ticket generation and exit flow
+
+---
+
+### 3. Movie Booking System (BookMyShow)
+
+**Classes:**
+
+* `User`, `Show`, `Seat`, `Booking`, `Theatre`, `Movie`
+* LockManager to prevent double-booking
+
+**Key Concepts:**
+
+* Seat lock timeout
+* Payment retry
+* Real-time availability
+
+---
+
+### 4. Ride Sharing App (Uber)
+
+**Classes:**
+
+* `Driver`, `Rider`, `Trip`, `Dispatcher`, `Location`
+
+**Key Concepts:**
+
+* Match drivers using nearest algorithm
+* Live tracking
+* Driver/rider ratings
+
+---
+
+### 5. Notification System
+
+**Classes:**
+
+* `NotificationManager`, `NotificationChannel`, `Template`, `RetryQueue`
+* Interface: `INotificationChannel` (Email, SMS, Push)
+
+**Key Concepts:**
+
+* Retry logic
+* Multi-channel abstraction
+* Rate limiting per channel
+
+---
+
+### 6. Rate Limiter
+
+**Approaches:**
+
+* Fixed window, sliding window
+* Token bucket
+
+**Classes:**
+
+* `TokenBucket`, `RateLimiter`
+
+```python
+class RateLimiter:
+    def __init__(self, max_requests, time_window):
+        self.bucket = TokenBucket(...)
+```
+
+**Key Concepts:**
+
+* Per-user limits
+* Use Redis or in-memory store
+
+---
+
+### 7. Chat System (WhatsApp)
+
+**Classes:**
+
+* `User`, `Message`, `ChatRoom`, `MessageQueue`
+
+**Key Concepts:**
+
+* Persistent messages
+* Delivery receipts
+* Group chats
+* Read receipts
+
+---
+
+### 8. File Storage System (Google Drive)
+
+**Classes:**
+
+* `User`, `File`, `Folder`, `Permission`, `Version`
+
+**Key Concepts:**
+
+* Folder-tree structure
+* Permission model (read/write/share)
+* Version control
+
+---
+
+### 9. E-commerce Cart System
+
+**Classes:**
+
+* `User`, `Cart`, `CartItem`, `Inventory`, `PricingEngine`
+
+**Key Concepts:**
+
+* Handle cart expiry
+* Validate inventory on checkout
+* Apply discounts
+
+---
+
+### 10. Payment Gateway (Razorpay)
+
+**Classes:**
+
+* `Transaction`, `Order`, `PaymentGateway`, `SignatureVerifier`
+
+**Key Concepts:**
+
+* Idempotency for retries
+* Signature verification
+* Callbacks
+* Retry on failure
+
+---
