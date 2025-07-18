@@ -173,3 +173,19 @@ class RateLimiter:
 * Retry on failure
 
 ---
+
+
+
+
+| **Pattern**          | **What It Does (In Simple Words)**                                                | **Real-World Example**                                                        |
+| -------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+
+| **Singleton**        | Makes sure **only one object** of a class is ever created.                        | One app-wide **Logger** or **Settings** object                                |
+
+| **Factory**          | Chooses the right class to create **based on input**.                             | You type “email” → it gives you an **Email** notification object              |
+
+| **Abstract Factory** | Creates a **group of related objects** without knowing their exact classes.       | Making a **Windows UI** or **Mac UI** with matching buttons, scrollbars, etc. |
+
+| **Builder**          | Builds a **complex object step by step** like a recipe.                           | Making a **Burger** by adding bun, patty, cheese in steps                     |
+
+| **Prototype**        | Makes a **copy of an existing object**, instead of making a new one from scratch. | Copying a **shape or form** in a drawing app                                  |
